@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produção</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+  <link rel="stylesheet" href="producao.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <section class="cabecalho">
+    <h1>AGRINHO 2025</h1>
+    <h3>Produção • Conexão Campo e Cidade</h3>
+  </section>
+
+  <!-- Navegação -->
+  <nav class="navbar navbar-expand-lg bg-success">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="index.html">Página Inicial |</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="energia.html">Energia Rural |</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="agua.html">Acessibilidade à Água |</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="producao.html">Produção</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Seção sobre Produção Sustentável -->
+  <section class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">Produção Sustentável no Campo</h2>
+        <p class="alinha-justificado">
+          A produção rural é a base de tudo o que chega à cidade: alimentos, fibras, energia e matéria-prima.
+          Hoje, ela vai além do plantio tradicional. Com o uso de tecnologias como drones, sensores, irrigação inteligente e práticas de agroecologia,
+          o campo tem inovado para produzir mais com menos impacto ambiental.
+        </p>
+        <p class="alinha-justificado">
+          A sustentabilidade na produção envolve cuidar do solo, preservar a água e garantir bem-estar aos trabalhadores e aos consumidores.
+          Com essa conexão cada vez mais forte entre campo e cidade, todos nós passamos a entender a origem do que consumimos
+          e a importância de valorizar o trabalho rural.
+        </p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="./assets/image/producao.producao.png" alt="Produção no campo" class="img-agro">
+      </div>
+    </div>
+  </section>
+
+
+
+
+<!-- Gráfico interativo -->
+<section class="container my-5">
+  <h2 class="mb-4 text-center text-success">Evolução da Produção Agropecuária no Brasil</h2>
+  <div class="card shadow-lg border-0 p-4">
+    <canvas id="graficoProducao" style="max-height: 400px;"></canvas>
+  </div>
+</section>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('graficoProducao').getContext('2d');
+  const graficoProducao = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['2015', '2017', '2019', '2021', '2023', '2025'],
+      datasets: [
+        {
+          label: 'Soja (milhões de toneladas)',
+          data: [96, 114, 120, 135, 150, 160],
+          borderColor: '#28a745',
+          backgroundColor: 'rgba(40, 167, 69, 0.2)',
+          tension: 0.4,
+          fill: true,
+          pointStyle: 'circle',
+          pointRadius: 6,
+          pointHoverRadius: 9,
+        },
+        {
+          label: 'Milho (milhões de toneladas)',
+          data: [85, 92, 98, 110, 123, 135],
+          borderColor: '#ffc107',
+          backgroundColor: 'rgba(255, 193, 7, 0.2)',
+          tension: 0.4,
+          fill: true,
+          pointStyle: 'rect',
+          pointRadius: 6,
+          pointHoverRadius: 9,
+        },
+        {
+          label: 'Cana-de-açúcar (milhões de toneladas)',
+          data: [650, 660, 670, 690, 715, 730],
+          borderColor: '#17a2b8',
+          backgroundColor: 'rgba(23, 162, 184, 0.2)',
+          tension: 0.4,
+          fill: true,
+          pointStyle: 'triangle',
+          pointRadius: 6,
+          pointHoverRadius: 9,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Crescimento das Principais Culturas Agrícolas (2015–2025)',
+          font: {
+            size: 18,
+            family: 'Arial',
+            weight: 'bold'
+          },
+          color: '#343a40',
+          padding: {
+            top: 10,
+            bottom: 30
+          }
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+        legend: {
+          position: 'top',
+          labels: {
+            color: '#343a40',
+            font: {
+              size: 14
+            }
+          }
+        }
+      },
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Ano',
+            color: '#6c757d'
+          },
+          ticks: {
+            color: '#495057'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Produção em Milhões de Toneladas',
+            color: '#6c757d'
+          },
+          ticks: {
+            color: '#495057'
+          },
+          grid: {
+            color: '#e9ecef'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+
+
+
+
+
+  <!-- Card com informações -->
+  <section class="container my-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+      <img src="./assets/image/trigo.png" class="card-img-top" alt="Imagem do campo">
+      <div class="card-body">
+        <h5 class="card-title">Dados Importantes</h5>
+        <p class="card-text">
+         O Brasil está entre os maiores produtores agrícolas do mundo, desempenhando um papel fundamental na segurança alimentar global. Culturas como soja, milho e cana-de-açúcar são pilares da economia nacional, abastecendo tanto o mercado interno quanto exportando para diversos países, impulsionando o desenvolvimento sustentável e gerando emprego em todas as regiões do país.
+
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dissertação exclamando a produção -->
+  <section class="container my-5">
+    <div class="bg-light p-4 rounded">
+<h3 class="mb-4 text-success text-center fw-bold">🌾 Do Campo à Cidade: Uma Jornada de Riqueza e Sustento!</h3>
+<p class="alinha-justificado fs-5">
+  É no <strong>campo</strong> que pulsa a verdadeira essência do Brasil. Entre o aroma da terra molhada e o calor dourado do sol nas plantações, germina mais do que alimentos — germina <em>esperança</em>, <em>tradição</em> e <em>futuro</em>. Cada grão de soja, cada espiga de milho, cada fruto colhido carrega o suor silencioso de milhões que, com amor e coragem, fazem da terra sua missão.
+</p>
+
+<p class="alinha-justificado fs-5">
+  O campo não apenas alimenta a cidade — <strong>ele a sustenta, a inspira, a impulsiona</strong>. As ruas agitadas, os mercados cheios, os lares felizes: todos eles nascem na simplicidade fértil do interior. O leite do café da manhã, o arroz e o feijão no prato, as frutas frescas da feira... tudo começa com as mãos que cultivam, com o coração que planta.
+</p>
+
+<p class="alinha-justificado fs-5">
+  Por sua vez, a cidade retribui com tecnologia, infraestrutura e oportunidades. É uma via de mão dupla, uma parceria poderosa: <strong>o campo produz, a cidade transforma</strong>. Juntas, caminham em um ciclo de interdependência que fortalece a economia, a cultura e o nosso modo de viver.
+</p>
+
+<p class="alinha-justificado fs-5">
+  Celebrar essa conexão é reconhecer que <span class="text-success fw-bold">não há cidade forte sem campo valorizado</span>. É honrar o agricultor, o vaqueiro, o apicultor, o pescador — guardiões da terra que transformam natureza em alimento, e alimento em vida.
+</p>
+
+<p class="alinha-justificado fs-5">
+  <span class="fw-bold">🌱 Valorizar o campo é valorizar a si mesmo.</span><br>
+  <span class="fw-bold">🌇 Respeitar o urbano é respeitar o destino dos frutos da terra.</span>
+</p>
+
+<p class="alinha-justificado fs-5 text-center">
+  <em>Assim seguimos: unidos, conectados, movendo o Brasil com o poder do campo e a energia da cidade.</em>
+</p>
+
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    <p class="mb-0">© Agrinho 2025 - Todos os direitos reservados. Conectando o campo à cidade com consciência.</p>
+  </div>
+
+   
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('graficoProducao').getContext('2d');
+    const graficoProducao = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2019', '2020', '2021', '2022', '2023'],
+        datasets: [{
+          label: 'Produção Agropecuária (milhões de toneladas)',
+          data: [230, 250, 270, 260, 290],
+          backgroundColor: '#198754'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' },
+          title: {
+            display: true,
+            text: 'Crescimento da Produção no Brasil'
+          }
+        }
+      }
+    });
+  </script>
+ 
+
+</body>
+</html>

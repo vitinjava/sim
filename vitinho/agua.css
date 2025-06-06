@@ -1,0 +1,282 @@
+/* Reset básico */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+.cabecalho {
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 30px;
+}
+
+.cabecalho h3 {
+  color: gray;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Container geral dos cards */
+.left-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin-left: 20px;
+}
+
+/* Card personalizado */
+.custom-card {
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.custom-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagem do card */
+.custom-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+/* Conteúdo do card */
+.card-content {
+  padding: 20px;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Título */
+.card-title {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Texto oculto com efeito slide */
+.card-text-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow-y: auto;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  /* Evita que o texto fique muito grudado */
+}
+
+/* Quando mostrar o texto */
+.show-text .card-text-hidden {
+  max-height: 300px; /* Ajuste conforme necessário */
+  opacity: 1;
+}
+
+/* Botão estilizado */
+.btn-reveal {
+  align-self: flex-start;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-reveal:hover {
+  background-color: #218838;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  .custom-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+
+  .card-text-hidden {
+    max-height: 200px;
+  }
+}
+
+
+.carousel-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.img-slide {
+    max-height: 550px; /* aumentei o tamanho */
+    width: 100%;
+    object-fit: cover; /* garante que a imagem preencha o espaço de forma bonita */
+}
+
+.br-3 {
+    border-radius: 15px;
+}
+
+/*imagem ao lado */
+
+.bloco-imagem-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #F8F8F8;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.imagem img {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.texto {
+  text-align: justify;
+  color: #59515E;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.texto h2 {
+  font-size: 2rem;
+  color: #232023;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.texto p {
+  padding: 0 10px;
+}
+
+.destaque {
+  color: #232023;
+  background-color: #D9D9D9;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-card {
+  animation: fadeSlideIn 1s ease forwards;
+  opacity: 0;
+}
+
+/* Para aplicar efeito gradual em cada card */
+.left-cards .custom-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.left-cards .custom-card:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.btn-reveal {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 0;
+  transition: left 0.3s ease;
+}
+
+.btn-reveal:hover::after {
+  left: 0;
+}
+.bloco-imagem-texto {
+  animation: fadeIn 1s ease-out both;
+  opacity: 0;
+  transform: translateY(40px);
+  animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.footer {
+  animation: footerFade 1.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-delay: 1.5s;
+}
+
+@keyframes footerFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
